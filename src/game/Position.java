@@ -1,4 +1,4 @@
-package src.board;
+package src.game;
 
 public class Position {
     private int row;
