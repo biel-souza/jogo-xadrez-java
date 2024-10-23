@@ -1,12 +1,28 @@
 package src.application;
 
 import src.chess.ChessPiece;
+import src.chess.ChessPosition;
 import src.chess.Color;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UI {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE = "\u001B[34m";
+
+    public static ChessPosition readChessPosition(Scanner sc) {
+        try {
+            String s = sc.nextLine();
+            char column = s.charAt(0);
+            int row = Integer.parseInt(s.substring(1));
+
+            return new ChessPosition(column, row);
+        } catch (RuntimeException e) {
+            throw new InputMismatchException("Erro ao ler posição");
+        }
+    }
 
     public static void printBoard(ChessPiece[][] pieces) {
 
